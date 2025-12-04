@@ -1,0 +1,32 @@
+{
+    "hello": "World!",
+    "Types": {
+        "Object": {"a":1, "b":"2"},
+        "Array": [1, 2, 3],
+        "String": "Hello, world!",
+        "Number": 123,
+        "Boolean": true,
+        "Null": null
+    },
+    "Alternatives": {
+        "Object_empty": {},
+        "Oject_nested": {"a":{"b":{"c":"d"}}},
+        "Object_Array_nested": {"a": [{"b":[{"c":[]}]}]},
+        "Array_empty": [],
+        "Array_empty_nested": [[[[]]]],
+        "Array_nested": [1, [2, [3, [4], 5]], 6],
+        "String_empty": "",
+        "String_number": "123.4",
+        "Number_int": 123,
+        "Number_int_negative": -123,
+        "Number_float": 1.234,
+        "Number_float_leading_zero": 0.0123,
+        "Number_float_negative": -0.0123,
+        "Number_scientific": 1.2e3,
+        "Number_scientific_negative": -1.2e-3,
+        "Boolean_true": true,
+        "Boolean_false": false
+    }
+}
+
+
