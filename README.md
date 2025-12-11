@@ -1,2 +1,2 @@
-# jitson-rs
-A simple Just-In-Time JSON parser in Rust
+# jitson-rs (WIP)
+A simple Just-In-Time JSON parser and deserializer in Rust.
