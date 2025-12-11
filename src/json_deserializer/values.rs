@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fmt;
-use crate::JsonNumber;
+use crate::json_deserializer::numbers::JsonNumber;
 
 
 #[derive(Debug, Clone, PartialEq)]

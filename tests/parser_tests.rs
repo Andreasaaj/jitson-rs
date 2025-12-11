@@ -1,4 +1,4 @@
-use jitson_rust::{jitson_parser, serde_parser, JsonValue, JsonError, JsonNumber};
+use jitson_rust::{json_deserializer::{deserialize, JsonValue, JsonNumber, JsonError}, serde_parser};
 use std::collections::HashMap;
 
 
@@ -7,16 +7,16 @@ fn compare_with_serde_simple() {
     let input = r#"{ "a": 1, "b": [true, false] }"#;
 
     let from_serde = serde_parser::parse_json(input).unwrap();
-    let from_jitson = jitson_parser::parse_json(input).unwrap();
+    let from_custom = deserialize::parse_json(input).unwrap();
 
     // Compare output to serde’s
-    assert_eq!(from_jitson.to_string(), from_serde.to_string());
+    assert_eq!(from_custom.to_string(), from_serde.to_string());
 }
 
 #[test]
 fn compare_with_manual_json_simple() {
     let input = r#"{ "a": 1, "b": [true, false] }"#;
-    let from_jitson = jitson_parser::parse_json(input).unwrap();
+    let from_jitson = deserialize::parse_json(input).unwrap();
 
     let inner_array = JsonValue::Array(vec![
         JsonValue::Bool(true),
@@ -39,16 +39,16 @@ fn compare_with_manual_json_simple() {
 }
 
 #[test]
-fn invalid_json_returns_any_json_error() {
+fn invalid_json_returns_any_json_error() { // TODO: remove this test? Test below should only be used
     let input = "{ unquoted_key: 10 }";
     
-    assert!(jitson_parser::parse_json(input).is_err());
+    assert!(deserialize::parse_json(input).is_err());
 }
 
 #[test]
 fn invalid_json_returns_error() {
     let input = "{ unquoted_key: 10 }";
-    let err = jitson_parser::parse_json(input).unwrap_err();
+    let err = deserialize::parse_json(input).unwrap_err();
 
     assert!(matches!(err, JsonError::UnexpectedToken(_)));
 }
