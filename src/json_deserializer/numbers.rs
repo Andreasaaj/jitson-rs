@@ -1,5 +1,3 @@
-
-
 #[derive(Debug, Clone, PartialEq)]
 pub enum JsonNumber {
     Int(i64),

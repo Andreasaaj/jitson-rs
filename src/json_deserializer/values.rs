@@ -1,7 +1,6 @@
+use crate::json_deserializer::numbers::JsonNumber;
 use std::collections::HashMap;
 use std::fmt;
-use crate::json_deserializer::numbers::JsonNumber;
-
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum JsonValue {
@@ -12,7 +11,6 @@ pub enum JsonValue {
     Null,
     Bool(bool),
 }
-
 
 impl fmt::Display for JsonValue {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -25,7 +23,9 @@ impl fmt::Display for JsonValue {
                 write!(f, "[")?;
                 let mut first = true;
                 for val in arr {
-                    if !first { write!(f, ",")?; }
+                    if !first {
+                        write!(f, ",")?;
+                    }
                     write!(f, "{}", val)?;
                     first = false;
                 }
@@ -35,7 +35,9 @@ impl fmt::Display for JsonValue {
                 write!(f, "{{")?;
                 let mut first = true;
                 for (k, v) in obj {
-                    if !first { write!(f, ",")?; }
+                    if !first {
+                        write!(f, ",")?;
+                    }
                     write!(f, "\"{}\":{}", k, v)?;
                     first = false;
                 }
